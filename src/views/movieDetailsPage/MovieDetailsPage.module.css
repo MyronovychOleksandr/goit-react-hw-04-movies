@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.img {
+    margin-right: 10px;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    margin-right: 10px;
+}
