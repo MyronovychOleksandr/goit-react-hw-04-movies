@@ -5,6 +5,13 @@ import moviesApi from "../../services/moviesApi";
 import Loader from "react-loader-spinner";
 import s from "./MovieDetailsPage.module.css";
 
+const Cast = lazy(() =>
+  import("../cast/Cast" /* webpackChunkName: "cast-page" */)
+);
+const Reviews = lazy(() =>
+  import("../reviews/Reviews" /* webpackChunkName: "reviews-page" */)
+);
+
 class MovieDetailsPage extends Component {
   state = {
     movies: [],
@@ -81,20 +88,8 @@ class MovieDetailsPage extends Component {
         </div>
         <Suspense fallback={<Loader />}>
           <Switch>
-            <Route
-              path={routes.cast}
-              component={lazy(() =>
-                import("../cast/Cast" /* webpackChunkName: "cast-page" */)
-              )}
-            />
-            <Route
-              path={`${match.url}/reviews`}
-              component={lazy(() =>
-                import(
-                  "../reviews/Reviews" /* webpackChunkName: "reviews-page" */
-                )
-              )}
-            />
+            <Route path={routes.cast} component={Cast} />
+            <Route path={`${match.url}/reviews`} component={Reviews} />
           </Switch>
         </Suspense>
       </>

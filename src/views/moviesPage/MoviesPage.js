@@ -26,16 +26,16 @@ class Movies extends Component {
     this.fetchMovie(nextQuery);
   }
 
-  handleChangeQuery = (quary) => {
+  handleChangeQuery = (query) => {
     this.props.history.push({
       ...this.props.location,
-      search: `query=${quary}`,
+      search: `query=${query}`,
     });
   };
 
-  fetchMovie = (keyword) => {
+  fetchMovie = (query) => {
     moviesApi
-      .fetchMoviesKeyword(keyword)
+      .fetchMoviesKeyword(query)
       .then((movies) => this.setState({ movies }));
   };
 
